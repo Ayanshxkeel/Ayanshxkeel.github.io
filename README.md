@@ -1,12 +1,12 @@
 # Ayan Shakeel — Portfolio
 
-The source for [ayanshxkeel.github.io](https://ayanshxkeel.github.io/), a one-page portfolio for my experience, skills, and eight Python projects.
+The source for [ayanshxkeel.github.io](https://ayanshxkeel.github.io/), a one-page portfolio for my experience, skills, and selected software, data, and physical computing projects.
 
 ## Sections
 
-- **Introduction:** Waterloo mathematics and current program analyst work.
+- **Introduction:** Waterloo mathematics and a featured ImpactIQ prototype.
 - **Experience:** Government of Ontario, CORDAX, BIASafe AI, and NexCreative.
-- **Projects:** Four featured projects followed by four additional tools, each linking to its source repository.
+- **Projects:** Selected software and data projects, each linking to its source repository.
 - **Skills and contact:** Technical tools, email, GitHub, and LinkedIn.
 
 ## How it is built
