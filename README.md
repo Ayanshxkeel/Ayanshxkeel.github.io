@@ -11,7 +11,7 @@ The source for [ayanshxkeel.github.io](https://ayanshxkeel.github.io/), a one-pa
 
 ## How it is built
 
-This is a static HTML and CSS site. There is no framework, server, database, analytics tracker, or build step. The layout adapts to smaller screens with CSS media queries. GitHub Pages publishes `index.html` from the `main` branch.
+This is a static HTML and CSS site with small JavaScript scroll effects. There is no framework, server, database, analytics tracker, or build step. The layout adapts to smaller screens with CSS media queries. GitHub Pages publishes `index.html` from the `main` branch.
 
 ## Run locally
 
@@ -25,4 +25,4 @@ Then visit `http://localhost:8000`.
 
 ## Make a change
 
-The page text and project links are in `index.html`. The colours, layout, and spacing are in its `<style>` block. Edit the file, preview it locally, then commit and push to `main`; GitHub Pages will publish the new version. Project demonstrations are linked only when they have a working public deployment; the current cards link to code.
+The page text and project links are in `index.html`. The dark palette, layout refinements, and motion are in `theme.css`; the base styles are in the `<style>` block. Edit the file, preview it locally, then commit and push to `main`; GitHub Pages will publish the new version. Project demonstrations are linked only when they have a working public deployment; the current cards link to code.
