@@ -1,65 +1,374 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Ayan Shakeel — mathematics, software, data, and physical computing.">
-  <title>Ayan Shakeel — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@10..48,75..100,300;10..48,75..100,400;10..48,75..100,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#07090d;--text:#e8edf2;--dim:#98a2b0;--mint:#8fd8c4;--copper:#d08a5b;--glass:rgba(12,15,22,.66);--line:rgba(232,237,242,.14)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Bricolage Grotesque",sans-serif;overflow-x:hidden}button,a{font:inherit;color:inherit}button{cursor:pointer}a{text-decoration:none}:focus-visible{outline:2px solid var(--mint);outline-offset:4px}#webgl{position:fixed;inset:0;z-index:0;width:100%;height:100vh}.scrim{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(7,9,13,.98) 0%,rgba(7,9,13,.78) 33%,rgba(7,9,13,.07) 64%,rgba(7,9,13,.02))}.progress{height:3px;background:var(--mint);position:fixed;z-index:20;top:0;left:0;width:0}.nav{position:fixed;z-index:10;top:25px;left:0;right:0;width:min(100% - 64px,1800px);margin:auto;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:500;font-size:1.2rem;letter-spacing:-.04em}.brand:before{content:"";display:inline-block;width:13px;height:13px;border-radius:100%;margin-right:10px;background:var(--copper);box-shadow:0 0 22px var(--copper)}.navlinks{display:flex;gap:4px;padding:7px;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(16px)}.navlinks a{padding:10px 18px;color:#d4dbe5;font-weight:500;font-size:.86rem;border-radius:99px}.navlinks a:last-child{background:#202938}.navlinks a:hover{color:var(--mint)}.rail{position:fixed;right:32px;top:50%;transform:translateY(-50%);z-index:10;display:grid;gap:8px}.rail button{background:var(--glass);border:1px solid var(--line);color:var(--dim);border-radius:12px;padding:10px 13px;font:500 .68rem "DM Mono",monospace;transition:.25s}.rail button.active,.rail button:hover{border-color:var(--mint);color:var(--text);background:rgba(23,53,55,.76)}
-    .story{height:500vh;position:relative;z-index:2}.copy{position:fixed;z-index:3;left:max(32px,calc((100vw - 1800px)/2));top:50%;width:min(500px,40vw);transform:translateY(-45%);opacity:0;pointer-events:none;transition:opacity .55s ease,transform .65s cubic-bezier(.16,1,.3,1)}.copy.active{opacity:1;transform:translateY(-50%);pointer-events:auto}.eyebrow,.hint{font:500 .72rem "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:var(--dim);margin:0 0 30px}.copy h1{font-size:clamp(4.3rem,8.2vw,8.8rem);font-weight:300;letter-spacing:-.095em;line-height:.78;margin:0 0 30px}.copy h1 em{font-style:normal;color:var(--mint)}.copy p{color:var(--dim);font-size:1.08rem;line-height:1.6;max-width:450px;margin:0}.hint{color:var(--mint);margin-top:26px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:1px solid var(--line);border-radius:999px;padding:13px 18px;background:var(--glass);font-size:.83rem;font-weight:500;transition:.25s}.pill.primary{color:#0a1211;background:var(--text);border-color:var(--text)}.pill:hover{border-color:var(--mint);transform:translateY(-2px)}.pill.primary:hover{background:var(--mint)}
-    .hud{position:fixed;z-index:6;right:clamp(95px,10vw,160px);bottom:46px;width:320px;border:1px solid var(--line);border-radius:18px;background:var(--glass);backdrop-filter:blur(20px);padding:15px 18px;opacity:0;transform:translateY(18px);transition:.5s}.hud.show{opacity:1;transform:none}.hudhead{display:flex;justify-content:space-between;color:var(--dim);font:400 .68rem "DM Mono",monospace}.hudhead b{color:var(--mint);font-weight:500}.hud canvas{width:100%;height:70px;display:block;margin-top:8px}
-    .content{position:relative;z-index:4;background:var(--bg);padding:110px max(32px,calc((100vw - 1300px)/2)) 30px}.section-title{font-size:clamp(3.8rem,7vw,7.4rem);line-height:.84;letter-spacing:-.095em;font-weight:300;margin:0 0 45px}.section-title em{color:var(--mint);font-style:normal}.filter{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}.filter button,.tag{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--dim);padding:8px 12px;font-size:.75rem}.filter button.active,.filter button:hover{color:#07100f;border-color:var(--mint);background:var(--mint)}.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.project{min-height:220px;padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(25,30,42,.94),rgba(12,14,20,.94));transition:.25s}.project:hover{border-color:var(--mint);transform:translateY(-4px)}.project.hide{display:none}.project small{font:500 .65rem "DM Mono",monospace;letter-spacing:.09em;color:var(--mint);text-transform:uppercase}.project h3{font-size:2rem;letter-spacing:-.065em;font-weight:400;margin:62px 0 7px}.project p{margin:0;color:var(--dim);line-height:1.5;max-width:360px}.about{padding:170px 0;display:grid;grid-template-columns:1fr 1fr;gap:11vw}.about p{font-size:1.2rem;line-height:1.65;color:var(--dim);margin:0}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}.tag{color:#c8d0dc}.contact{padding:90px 0 40px;border-top:1px solid var(--line)}.contact h2{font-size:clamp(4rem,8.8vw,9.3rem);font-weight:300;letter-spacing:-.105em;line-height:.78;max-width:1100px;margin:0}.contact h2 span{color:var(--mint)}.footer{display:flex;justify-content:space-between;color:var(--dim);font:400 .68rem "DM Mono",monospace;margin-top:100px;padding-top:18px;border-top:1px solid var(--line)}
-    @media(max-width:800px){.nav{width:calc(100% - 30px);top:16px}.brand{font-size:.95rem}.navlinks a{padding:8px 9px;font-size:.72rem}.navlinks a:nth-child(1),.navlinks a:nth-child(2){display:none}.scrim{background:linear-gradient(180deg,rgba(7,9,13,.96) 0%,rgba(7,9,13,.7) 47%,rgba(7,9,13,.08))}.copy{left:24px;right:24px;top:24%;width:auto;transform:translateY(-20%)}.copy.active{transform:translateY(-24%)}.copy h1{font-size:clamp(3.9rem,18vw,5.5rem)}.copy p{font-size:.95rem;max-width:330px}.rail{right:12px;top:auto;bottom:24px;transform:none;display:flex}.rail button{padding:8px 9px;font-size:0}.rail button:before{content:"";display:block;width:7px;height:7px;border-radius:50%;background:currentColor}.hud{right:20px;left:20px;bottom:78px;width:auto}.projects,.about{grid-template-columns:1fr}.content{padding:80px 24px 26px}.about{padding:110px 0}.contact{padding-top:60px}.footer{gap:12px;flex-wrap:wrap;margin-top:70px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayan Shakeel — Portfolio</title>
+<meta name="description" content="Ayan Shakeel is a University of Waterloo mathematics student building software, data tools, and physical prototypes that turn messy questions into clear experiences.">
+<meta property="og:title" content="Ayan Shakeel — Portfolio"><meta property="og:description" content="Software, data tools, and physical prototypes that make information easier to see.">
+<meta property="og:type" content="website"><meta name="theme-color" content="#07090d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎛️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090d;--ink:#e8edf2;--dim:#98a2b0;--mint:#34c9f0;--cu:#c24be6;--line:rgba(255,255,255,.12);--glass:rgba(16,20,28,.66);
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 'Bricolage Grotesque',system-ui,sans-serif;overflow-x:hidden}
+canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.6s}body.ready canvas#gl{opacity:1}
+.scrim{position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,9,13,.88) 0,rgba(7,9,13,.55) 34%,transparent 62%)}
+a,button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+nav{position:fixed;z-index:20;top:max(14px,env(safe-area-inset-top));left:20px;right:20px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;font-weight:500;text-decoration:none}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--cu);box-shadow:0 0 12px var(--cu)}
+.links{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:99px;background:var(--glass);backdrop-filter:blur(14px)}
+.links a{padding:6px 14px;border-radius:99px;text-decoration:none;font-size:14px;color:var(--dim)}
+.links a:hover{color:var(--ink);background:rgba(255,255,255,.08)}
+#story{height:500vh}
+.panel{position:fixed;z-index:10;left:clamp(20px,5vw,72px);top:50%;width:min(480px,calc(100% - 40px));transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .35s}
+.panel.on{opacity:1}.panel.on .btns,.panel.on a{pointer-events:auto}
+.panel small{display:block;color:var(--mint);margin-bottom:14px;font-size:14px}
+h1,h2{text-shadow:0 0 30px rgba(52,201,240,.18);font-weight:300;letter-spacing:-.035em;line-height:1;margin:0}
+.panel h2,.panel h1{font-size:clamp(2.6rem,7vw,5.4rem)}
+.panel p{color:#b9c2ce;max-width:42ch;margin:20px 0 10px}
+.hint{color:var(--mint)!important;font-size:14px}
+.btns{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 20px;border-radius:99px;border:1px solid var(--line);text-decoration:none;background:transparent;cursor:pointer}
+.btn.pri{background:linear-gradient(135deg,#34c9f0,#8b5cf6);color:#050810;border-color:transparent;box-shadow:0 0 26px rgba(52,201,240,.28)}.btn.pri:hover{box-shadow:0 0 34px rgba(139,92,246,.45)}
+.btn:hover{border-color:var(--mint)}
+.rail{position:fixed;z-index:15;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;transition:opacity .3s}
+.rail button{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);border-radius:10px;padding:5px 10px;font-size:12px;color:var(--dim);cursor:pointer;text-align:left}
+.rail button.on{background:var(--mint);color:#04101a;box-shadow:0 0 14px rgba(52,201,240,.4)}
+#hud{position:fixed;z-index:12;right:clamp(16px,4vw,64px);bottom:clamp(16px,5vh,48px);width:min(280px,calc(100% - 32px));padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(14px);opacity:0;transition:opacity .4s}
+#hud.on{opacity:1}
+#hud div{display:flex;justify-content:space-between;font-size:13px;color:var(--dim)}#hud b{font-weight:500;color:var(--ink)}
+#spark{width:100%;height:56px;display:block;margin-top:6px}
+.scroll{position:fixed;z-index:10;left:clamp(20px,5vw,72px);bottom:22px;font-size:13px;color:var(--dim);transition:opacity .3s}
+.bar{position:fixed;z-index:30;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--mint),var(--cu));box-shadow:0 0 10px var(--mint);width:0}
+main{position:relative;z-index:5;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(52,201,240,.07),transparent 70%),radial-gradient(60vw 40vh at 85% 0%,rgba(194,75,230,.10),transparent 60%),radial-gradient(50vw 40vh at 0% 45%,rgba(52,201,240,.08),transparent 60%),var(--bg)}
+section{padding:clamp(72px,12vw,140px) clamp(20px,5vw,72px)}
+section h2{font-size:clamp(2.4rem,6vw,4.6rem);margin-bottom:36px}
+.chips{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.chip{padding:6px 16px;border-radius:99px;border:1px solid var(--line);background:none;cursor:pointer;color:var(--dim)}
+.chip[aria-pressed=true]{background:var(--cu);border-color:var(--cu);color:#fff;box-shadow:0 0 18px rgba(194,75,230,.35)}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line);text-decoration:none}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{margin:0;font-weight:400;font-size:1.5rem;letter-spacing:-.02em}.proj p{margin:0;color:var(--dim)}
+.proj span{color:var(--mint);font-size:14px}.proj:hover h3{color:var(--mint)}.proj[hidden]{display:none}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{color:#b9c2ce;max-width:52ch}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:14px;color:var(--dim)}
+footer{display:flex;justify-content:space-between;padding:24px clamp(20px,5vw,72px) 32px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:800px){
+ .scrim{background:linear-gradient(180deg,rgba(7,9,13,.9) 0,rgba(7,9,13,.5) 45%,transparent 70%)}
+ .panel{top:84px;transform:none}.panel p{margin-top:12px}
+ .rail{display:none}.about{grid-template-columns:1fr;gap:24px}.proj{grid-template-columns:1fr}.links a:nth-child(1),.links a:nth-child(3){display:none}
+}
+#case{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;padding:96px clamp(20px,5vw,72px) 80px;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .35s,transform .35s,visibility .35s}
+#case.open{opacity:1;visibility:visible;transform:none}
+#cx{position:fixed;top:max(14px,env(safe-area-inset-top));left:clamp(20px,5vw,72px);z-index:46;background:var(--glass);backdrop-filter:blur(14px)}
+#case .wrap{max-width:880px;margin:0 auto}
+#case h2{font-size:clamp(2.6rem,8vw,6rem);margin:12px 0 22px}
+#case .lede{font-size:1.3rem;color:#cfd6df;max-width:44ch;margin:0}
+#case .kick{color:var(--mint);font-size:14px}
+#case .meta{display:flex;gap:40px;flex-wrap:wrap;margin:32px 0 8px;padding:18px 0;border-block:1px solid var(--line)}
+#case .meta span{display:block;color:var(--dim);font-size:13px}
+#case h3{font-weight:400;font-size:1.05rem;color:var(--mint);margin:44px 0 8px}
+#case p{color:#b9c2ce;max-width:60ch;margin:0}
+#case .btns{margin-top:48px}
+#intro{position:relative;z-index:6;min-height:100svh;display:flex;align-items:center;padding:110px clamp(20px,5vw,72px) 80px}
+#intro .ib{max-width:640px}
+#intro h1{font-size:clamp(2.5rem,6.4vw,5rem);margin:0 0 24px}
+#intro .bio{font-size:1.15rem;color:#c2cad6;max-width:52ch;margin:0 0 28px}
+.facts{display:grid;gap:14px;margin:0 0 8px;max-width:520px}
+.facts div{display:flex;gap:18px;border-top:1px solid var(--line);padding-top:12px}
+.facts dt{width:84px;flex:none;color:var(--dim)}.facts dd{margin:0}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+#intro .ib>:not(h1){animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+#intro .ib>:nth-child(2){animation-delay:.15s}#intro .ib>:nth-child(3){animation-delay:.28s}#intro .ib>:nth-child(4){animation-delay:.4s}
+.tick{position:absolute;left:0;right:0;bottom:0;overflow:hidden;border-block:1px solid var(--line);background:rgba(7,9,13,.55);backdrop-filter:blur(8px);padding:12px 0;white-space:nowrap}
+.tick div{display:inline-block;animation:mq 40s linear infinite;color:var(--dim);font-size:15px}.tick b{margin:0 22px;color:var(--cu);font-weight:400}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+.proj{transition:transform .25s,background .25s}.proj:hover{transform:translateX(10px);background:linear-gradient(90deg,rgba(52,201,240,.08),transparent)}
+.proj h3::after{content:' \2197';opacity:0;transition:opacity .2s;color:var(--mint)}.proj:hover h3::after{opacity:1}
+#cur{position:fixed;z-index:50;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--mint);border-radius:50%;pointer-events:none;mix-blend-mode:screen;transition:width .2s,height .2s,margin .2s,background .2s}
+#cur.big{width:68px;height:68px;margin:-34px 0 0 -34px;background:rgba(52,201,240,.14)}
+@media(pointer:coarse){#cur{display:none}}
+.btn{transition:transform .2s,border-color .2s}
+.scroll{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.live{display:inline-flex;gap:8px;align-items:center;color:var(--ink)}
+.live i{width:7px;height:7px;border-radius:50%;background:#6ee7a8;animation:pl 1.8s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(110,231,168,.7)}100%{box-shadow:0 0 0 10px rgba(110,231,168,0)}}
+#intro h1{background:linear-gradient(100deg,#e8edf2 25%,#34c9f0 45%,#c24be6 60%,#e8edf2 80%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 8s linear infinite,up .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sh{to{background-position:-260% 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.panel,#hud{transition:none}#intro h1,#intro .ib>*,.tick div,.live i{animation:none!important}.rv{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
-  <canvas id="webgl" aria-label="Interactive 3D project turntable"></canvas><div class="scrim"></div><div class="progress"></div>
-  <header class="nav"><a class="brand" href="#intro">Ayan Shakeel</a><nav class="navlinks"><a href="#story">Work</a><a href="#projects">All projects</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
-  <aside class="rail" aria-label="Project stops"><button class="active" data-stop="0">Intro</button><button data-stop="1">ImpactIQ</button><button data-stop="2">Recall</button><button data-stop="3">Drift</button><button data-stop="4">Plans</button></aside>
-  <div class="hud" id="hud"><div class="hudhead"><span id="hudLabel">Acceleration · live</span><b id="hudValue">0.0 g</b></div><canvas id="spark" width="600" height="140"></canvas></div>
-  <main>
-    <section class="story" id="story">
-      <article class="copy active" data-copy="0" id="intro"><p class="eyebrow">Waterloo mathematics · 2026</p><h1>Making the useful <em>feel alive.</em></h1><p>I build thoughtful software, data tools, and physical prototypes that turn a messy question into a clear experience.</p><div class="buttons"><a class="pill primary" href="#projects">Explore work ↓</a><a class="pill" href="https://github.com/Ayanshxkeel" target="_blank" rel="noopener">GitHub ↗</a></div><p class="hint">Scroll to move around the turntable</p></article>
-      <article class="copy" data-copy="1"><p class="eyebrow">Physical computing · 2026</p><h1>A real tap, a <em>live story.</em></h1><p>An Arduino and MPU-6500 capture sudden movement, then a dashboard turns it into peak acceleration, inferred direction, and a 3D view.</p><div class="buttons"><a class="pill primary" href="https://impact-f1tech.vercel.app/dashboard/" target="_blank" rel="noopener">Open dashboard ↗</a><a class="pill" href="https://github.com/Ayanshxkeel/ImpactIQ" target="_blank" rel="noopener">Read the build ↗</a></div><p class="hint">Try it: click the car to simulate an impact</p></article>
-      <article class="copy" data-copy="2"><p class="eyebrow">Public data · search</p><h1>A more transparent way to search <em>recalls.</em></h1><p>RecallMatch uses official Canadian recall notices and text similarity to help users find related products and inspect the source material.</p><div class="buttons"><a class="pill primary" href="https://github.com/Ayanshxkeel/recallmatch" target="_blank" rel="noopener">See the project ↗</a></div><p class="hint">Move the pointer over a card, then click to flag it</p></article>
-      <article class="copy" data-copy="3"><p class="eyebrow">Data quality · statistics</p><h1>Data Drift <em>Watch.</em></h1><p>Compare datasets before reusing a model, and see when the new data no longer looks like the old.</p><div class="buttons"><a class="pill primary" href="https://github.com/Ayanshxkeel/data-drift-watch" target="_blank" rel="noopener">See the project ↗</a></div><p class="hint">Move the pointer to shift the new-data curve</p></article>
-      <article class="copy" data-copy="4"><p class="eyebrow">Constraint solving · planning</p><h1>Course Plan <em>Simulator.</em></h1><p>Explore course combinations with prerequisites, terms, and workload rules.</p><div class="buttons"><a class="pill primary" href="https://github.com/Ayanshxkeel/course-plan-simulator" target="_blank" rel="noopener">See the project ↗</a></div><p class="hint">Click a course to add or remove it from the plan</p></article>
-    </section>
-    <section class="content" id="projects"><h2 class="section-title">Everything I’ve <em>built.</em></h2><div class="filter" aria-label="Project filters"><button class="active" data-filter="all">All</button><button data-filter="hardware">Hardware</button><button data-filter="data">Data</button><button data-filter="software">Software</button></div><div class="projects"><a class="project" data-type="hardware software" href="https://github.com/Ayanshxkeel/ImpactIQ" target="_blank" rel="noopener"><small>Hardware · software</small><h3>ImpactIQ ↗</h3><p>Connected model-car impact telemetry with an Arduino, MPU-6500, and a live 3D dashboard.</p></a><a class="project" data-type="data software" href="https://github.com/Ayanshxkeel/recallmatch" target="_blank" rel="noopener"><small>Data · software</small><h3>RecallMatch ↗</h3><p>Search Canadian product recall notices with transparent text similarity.</p></a><a class="project" data-type="data" href="https://github.com/Ayanshxkeel/data-drift-watch" target="_blank" rel="noopener"><small>Data quality · statistics</small><h3>Data Drift Watch ↗</h3><p>Compare dataset snapshots before reusing a model.</p></a><a class="project" data-type="software" href="https://github.com/Ayanshxkeel/course-plan-simulator" target="_blank" rel="noopener"><small>Software · planning</small><h3>Course Plan Simulator ↗</h3><p>Explore feasible course combinations using constraints and workload rules.</p></a></div>
-      <section class="about" id="about"><div><h2 class="section-title">Build with <em>purpose.</em></h2></div><div><p>I’m a University of Waterloo mathematics student in Waterloo, Ontario. I enjoy the space between an idea and a usable result: a dashboard, analytical tool, or sensor prototype that helps people see a situation more clearly.</p><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">FastAPI</span><span class="tag">Three.js</span><span class="tag">Power BI</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Figma</span><span class="tag">Data visualization</span><span class="tag">Product design</span></div></div></section>
-      <section class="contact" id="contact"><p class="eyebrow">Let’s connect</p><h2>Have a project that deserves to <span>feel alive?</span></h2><div class="buttons"><a class="pill primary" href="mailto:a9shakee@uwaterloo.ca">Email ↗</a><a class="pill" href="https://www.linkedin.com/in/ayan-shakeel/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="pill" href="https://github.com/Ayanshxkeel" target="_blank" rel="noopener">GitHub ↗</a></div><footer class="footer"><span>© 2026 Ayan Shakeel</span><span>Waterloo, Ontario</span></footer></section>
-    </section>
-  </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script>
-  (()=>{const canvas=document.querySelector("#webgl"),reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,100),renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true}),clock=new THREE.Clock(),root=new THREE.Group(),ray=new THREE.Raycaster(),pointer=new THREE.Vector2(),mint=new THREE.Color("#8fd8c4"),copper=new THREE.Color("#d08a5b"),targets=[0,-Math.PI/2,Math.PI,Math.PI/2],copies=[...document.querySelectorAll("[data-copy]")],rail=[...document.querySelectorAll("[data-stop]")],hud=document.querySelector("#hud"),hudLabel=document.querySelector("#hudLabel"),hudValue=document.querySelector("#hudValue"),spark=document.querySelector("#spark"),ctx=spark.getContext("2d");let stop=0,targetRotation=0,shock=0,drift=0,rendering=true,activeCard=null,mouseX=0,mouseY=0,history=Array(60).fill(0),courses=[];
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.outputEncoding=THREE.sRGBEncoding;scene.fog=new THREE.Fog("#07090d",13,32);camera.position.set(0,6.9,14.8);scene.add(root);
-  const hemi=new THREE.HemisphereLight("#cbd7f2","#17131b",1.2),key=new THREE.DirectionalLight("#e4d8c8",1.6),rim=new THREE.PointLight(mint,2.5,18);key.position.set(4,8,8);rim.position.set(-5,4,6);scene.add(hemi,key,rim);
-  const mat=(color,metal=.05,rough=.6)=>new THREE.MeshStandardMaterial({color,metalness:metal,roughness:rough});
-  function rings(){let c=document.createElement("canvas");c.width=c.height=1024;let x=c.getContext("2d");x.fillStyle="#7f8797";x.fillRect(0,0,1024,1024);for(let r=20;r<720;r+=13){x.strokeStyle=r%52===0?"#dce8ee":"#535c6e";x.lineWidth=r%52===0?3:1;x.beginPath();x.arc(512,512,r,0,Math.PI*2);x.stroke()}return new THREE.CanvasTexture(c)}
-  const table=new THREE.Mesh(new THREE.CylinderGeometry(7.2,7.45,.62,96),new THREE.MeshStandardMaterial({map:rings(),metalness:.48,roughness:.48}));table.position.y=-.55;root.add(table);const rimMesh=new THREE.Mesh(new THREE.TorusGeometry(7.25,.075,10,96),mat("#8fd8c4",.35,.28));rimMesh.rotation.x=Math.PI/2;rimMesh.position.y=-.18;root.add(rimMesh);
-  function groupAt(angle){let g=new THREE.Group();g.position.set(Math.sin(angle)*4.45,0,Math.cos(angle)*4.45);g.rotation.y=angle;root.add(g);return g}
-  const impact=groupAt(0),recall=groupAt(Math.PI/2),driftG=groupAt(Math.PI),plans=groupAt(-Math.PI/2);const interact=[];
-  function cube(g,w,h,d,color,x,y,z){let m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color,.16,.48));m.position.set(x,y,z);g.add(m);return m}
-  const car=new THREE.Group();impact.add(car);cube(car,3.4,.45,1.45,"#2a303d",0,.25,0);cube(car,1.3,.55,1.2,"#687084",-.35,.72,0);cube(car,.82,.08,1.05,"#9be5d0",.22,.55,0);for(let i=-.36;i<.4;i+=.12)cube(car,.035,.09,1.23,"#d08a5b",.22,.66,i);let wheels=[];[[-1.1,-.7],[-1.1,.7],[1.1,-.7],[1.1,.7]].forEach(p=>{let w=new THREE.Mesh(new THREE.CylinderGeometry(.48,.48,.24,22),mat("#c7af8d",.1,.55));w.rotation.x=Math.PI/2;w.position.set(p[0],0,p[1]);car.add(w);wheels.push(w)});let wing=cube(car,.7,.15,2.15,"#8098c6",1.9,.34,0);interact.push(car);car.userData.kind="impact";
-  const lens=new THREE.Group();recall.add(lens);let ring=new THREE.Mesh(new THREE.TorusGeometry(.78,.095,12,36),mat("#d08a5b",.35,.3));let handle=new THREE.Mesh(new THREE.CylinderGeometry(.09,.13,.9,12),mat("#d08a5b",.3,.35));handle.rotation.z=-.62;handle.position.set(.72,-.72,0);lens.add(ring,handle);lens.position.set(0,1.2,.6);let cards=[];for(let i=0;i<4;i++){let c=new THREE.Group(),base=new THREE.Mesh(new THREE.BoxGeometry(.75,1.55,.08),mat("#8294b7",.14,.38));c.position.set((i-1.5)*.82,.78,-.15*i);c.rotation.y=(i-1.5)*.1;c.add(base);for(let y=-.35;y<.45;y+=.25)cube(c,.52,.05,.025,"#e7eef7",0,y,.06);recall.add(c);c.userData.kind="card";cards.push(c);interact.push(c)}
-  let oldBars=[],newBars=[];for(let i=0;i<13;i++){let a=Math.exp(-Math.pow((i-6)/2.3,2))*1.8+.12,b=Math.exp(-Math.pow((i-6)/2.25,2))*1.8+.12;let o=cube(driftG,.22,a,.38,"#d08a5b",(i-6)*.28,a/2,0),n=cube(driftG,.22,b,.38,"#8fd8c4",(i-6)*.28,b/2,.55);oldBars.push(o);newBars.push(n)}let baseline=cube(driftG,4.15,.05,.1,"#d08a5b",0,.03,.25);interact.push(driftG);driftG.userData.kind="drift";
-  let course=[];for(let z=0;z<3;z++)for(let x=0;x<3;x++){let c=cube(plans,.68,.48,.68,"#586074",(x-1)*.82,.25,(z-1)*.82);c.userData={kind:"course",index:z*3+x,x,z,selected:false};course.push(c);interact.push(c)}
-  function setStop(n,scroll=true){stop=Math.max(0,Math.min(4,n));targetRotation=targets[stop]||0;copies.forEach((c,i)=>c.classList.toggle("active",i===stop));rail.forEach((b,i)=>b.classList.toggle("active",i===stop));hud.classList.toggle("show",stop>0);let labels=[["",""],["Acceleration · live","0.0 g"],["Recall match","0.86"],["Drift score","0.18"],["Plan health","Ready"]];hudLabel.textContent=labels[stop][0];hudValue.textContent=labels[stop][1];if(scroll)scrollTo({top:stop*innerHeight,behavior:reduced?"auto":"smooth"})}
-  rail.forEach(b=>b.addEventListener("click",()=>setStop(+b.dataset.stop)));addEventListener("keydown",e=>{if(["ArrowDown","ArrowRight"].includes(e.key)){e.preventDefault();setStop(stop+1)}if(["ArrowUp","ArrowLeft"].includes(e.key)){e.preventDefault();setStop(stop-1)}});
-  function angleLerp(a,b,t){let d=(b-a+Math.PI)%(Math.PI*2)-Math.PI;return a+d*t}function onPointer(e){pointer.x=(e.clientX/innerWidth)*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;mouseX=pointer.x;mouseY=pointer.y}addEventListener("pointermove",onPointer);
-  addEventListener("click",e=>{if(e.target.closest("a,button"))return;ray.setFromCamera(pointer,camera);let hit=ray.intersectObjects(interact,true)[0];if(!hit)return;let obj=hit.object;while(obj&&(!obj.userData||!obj.userData.kind))obj=obj.parent;let kind=obj&&obj.userData.kind;if(kind==="impact"){shock=1;history.push(2.8);history=history.slice(-60)}if(kind==="card"){obj.userData.flagged=!obj.userData.flagged;obj.children[0].material.color.set(obj.userData.flagged?"#d08a5b":"#8294b7")}if(kind==="drift"){shock=1}if(kind==="course"){obj.userData.selected=!obj.userData.selected}});
-  let story=document.querySelector(".story");addEventListener("scroll",()=>{let y=scrollY,max=Math.max(1,story.offsetHeight-innerHeight),n=Math.min(4,Math.floor(y/max*5));if(n!==stop)setStop(n,false);document.querySelector(".progress").style.width=(y/(document.documentElement.scrollHeight-innerHeight)*100)+"%";rendering=y<story.offsetHeight+innerHeight*.2},{passive:true});
-  document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");let f=b.dataset.filter;document.querySelectorAll(".project").forEach(p=>p.classList.toggle("hide",f!=="all"&&!p.dataset.type.includes(f))) }));
-  function drawSpark(v){history.push(v);history=history.slice(-60);ctx.clearRect(0,0,600,140);ctx.strokeStyle="rgba(232,237,242,.13)";ctx.beginPath();ctx.moveTo(0,70);ctx.lineTo(600,70);ctx.stroke();ctx.strokeStyle=stop===3?"#d08a5b":"#8fd8c4";ctx.lineWidth=4;ctx.beginPath();history.forEach((x,i)=>{let px=i/59*600,py=116-Math.min(100,x*36);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke()}
-  function animate(){requestAnimationFrame(animate);if(!rendering)return;let dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;root.rotation.y=angleLerp(root.rotation.y,targetRotation,.06);if(stop===0&&!reduced)root.rotation.y+=dt*.07;camera.position.x+=(mouseX*.25-camera.position.x)*.025;camera.position.y+=(6.9+mouseY*.14-camera.position.y)*.03;camera.position.z+=(stop?11.4:14.8-camera.position.z)*.035;camera.lookAt(0,.35,0);rim.color.lerp(stop===2||stop===3?copper:mint,.04);lens.position.x+=(mouseX*1.15-lens.position.x)*.08;lens.position.y+=(1.15-mouseY*.65-lens.position.y)*.08;shock*=.9;car.position.y=Math.sin(t*20)*shock*.32;wheels.forEach(w=>w.rotation.z+=shock*.5);drift+=(mouseX-drift)*.045;newBars.forEach((b,i)=>{let h=Math.exp(-Math.pow((i-6-drift*3)/2.25,2))*1.8+.12;b.scale.y+=(h/b.geometry.parameters.height-b.scale.y)*.1;b.position.y=b.geometry.parameters.height*b.scale.y/2});course.forEach(c=>{let u=c.userData,left=course.find(q=>q.userData.x===u.x-1&&q.userData.z===u.z),bad=u.selected&&u.x>0&&(!left||!left.userData.selected);c.material.color.set(u.selected?(bad?"#d08a5b":"#8fd8c4"):"#586074");c.position.y+=(u.selected?.55:.25-c.position.y)*.1;if(bad)c.rotation.z=Math.sin(t*16+u.index)*.1});let val=stop===1?Math.max(.7,shock*3.2):stop===2?.72+Math.abs(mouseX)*.18:stop===3?Math.abs(drift)*.17+.08:stop===4?course.filter(c=>c.userData.selected).length/9:0;hudValue.textContent=stop===1?val.toFixed(1)+" g":stop===2?val.toFixed(2):stop===3?val.toFixed(2):stop===4?(val>.55?"Ready":"Planning"):"";drawSpark(val);renderer.render(scene,camera)}animate();
-  addEventListener("resize",()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});setStop(0,false);
-  })();
-  </script>
+<div class="bar" id="bar"></div><div id="cur"></div>
+<canvas id="gl" aria-label="Interactive 3D turntable of projects"></canvas>
+<div class="scrim"></div>
+<nav>
+ <a class="logo" href="#top"><i></i>Ayan Shakeel</a>
+ <div class="links"><a href="#story">Demos</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#top" id="snd">Sound off</a></div>
+</nav>
+<div class="rail" id="rail" aria-label="Exhibits"></div>
+
+<header id="intro"><div class="ib">
+ <h1>Practical tools, built for the people who rely on them.</h1>
+ <p class="bio">I'm Ayan Shakeel, a University of Waterloo mathematics student and Program Analyst with the Government of Ontario. I build software, data tools, and sensor prototypes that help people see a situation more clearly.</p>
+ <dl class="facts"><div><dt>Studying</dt><dd>Mathematics, University of Waterloo</dd></div><div><dt>Working</dt><dd>Program Analyst, Government of Ontario</dd></div><div><dt>Based in</dt><dd>Toronto, Ontario</dd></div></dl>
+ <div class="btns"><a class="btn pri" href="#story">Try the live demos</a><a class="btn" href="#work">All projects</a><a class="btn" id="gh2" href="#">GitHub</a></div>
+</div><div class="tick" aria-hidden="true"><div>Python<b>✦</b>Data systems<b>✦</b>Physical computing<b>✦</b>Product thinking<b>✦</b>Mathematics<b>✦</b>Arduino<b>✦</b>Three.js<b>✦</b>FastAPI<b>✦</b>Python<b>✦</b>Data systems<b>✦</b>Physical computing<b>✦</b>Product thinking<b>✦</b>Mathematics<b>✦</b>Arduino<b>✦</b>Three.js<b>✦</b>FastAPI<b>✦</b></div></div></header>
+<div id="case" role="dialog" aria-modal="true" aria-label="Project details"><button class="btn" id="cx">Back to site</button><div class="wrap" id="cw"></div></div>
+<noscript><p style="position:relative;z-index:99;padding:80px 20px">This portfolio uses JavaScript and WebGL. Please enable them to explore the projects.</p></noscript>
+<div id="top"></div>
+<div id="story"></div>
+
+<div class="panel" data-i="0"><small>Selected work</small><h2>Four ideas you can touch.</h2><p>Scroll to turn the table. Each exhibit is a live miniature of a real project.</p></div>
+<div class="panel" data-i="1"><small>Physical computing, 2026</small><h2>ImpactIQ</h2>
+ <p>A real tap, a live story. An Arduino and MPU-6500 capture sudden movement, then a dashboard turns it into peak acceleration, inferred direction, and a 3D view.</p>
+ <p class="hint">Click the car to launch it.</p><div class="btns"><a class="btn pri" href="#/impactiq">See the project</a><a class="btn" href="https://impact-f1tech.vercel.app/dashboard/" target="_blank" rel="noopener">Open live dashboard</a></div></div>
+<div class="panel" data-i="2"><small>Public data, search</small><h2>RecallMatch</h2>
+ <p>A more transparent way to search Canadian product recalls.</p>
+ <p class="hint">Move the pointer to slide the lens. Click to flag a notice.</p><div class="btns"><a class="btn pri" href="#/recallmatch">See the project</a></div></div>
+<div class="panel" data-i="3"><small>Data quality, statistics</small><h2>Data Drift Watch</h2>
+ <p>Compare datasets before reusing a model, and see when the new data no longer looks like the old.</p>
+ <p class="hint">Move the pointer left and right to drift the data. Click to shock it.</p><div class="btns"><a class="btn pri" href="#/driftwatch">See the project</a></div></div>
+<div class="panel" data-i="4"><small>Constraint solving</small><h2>Course Plan Simulator</h2>
+ <p>Explore course combinations with prerequisites, conflicts, and workload rules.</p>
+ <p class="hint">Click courses to drop them into the week. Skip a prerequisite or double-book a slot and watch it flag the clash.</p><div class="btns"><a class="btn pri" href="#/courseplan">See the project</a></div></div>
+<div class="scroll" id="scrollhint"><span class="live"><i></i><span id="clk">Live</span></span><span>Scroll to turn the table. Click anything.</span></div>
+<div id="hud"><div><span id="hl"></span><b id="hv"></b></div><canvas id="spark" width="520" height="112"></canvas></div>
+
+<main>
+<section id="work"><h2>Everything I've built</h2>
+ <div class="chips" id="chips"></div>
+ <div id="list"></div></section>
+<section id="about"><div class="about"><h2>Build with purpose.</h2><div>
+ <p>I'm a University of Waterloo mathematics student who enjoys the space between an idea and a usable result. That can mean a dashboard, an analytical tool, or a sensor prototype: anything that helps people see a situation more clearly.</p>
+ <div class="tags"><span>Python</span><span>SQL</span><span>C++</span><span>Arduino</span><span>FastAPI</span><span>Three.js</span><span>Power BI</span><span>pandas</span><span>scikit-learn</span><span>Figma</span><span>Data visualization</span><span>Product design</span></div></div></div></section>
+<section id="contact"><h2 style="max-width:14em">Have a project that deserves to feel alive?</h2>
+ <div class="btns"><a class="btn pri" id="em" href="#">Email me</a><a class="btn" id="li" href="#">LinkedIn</a><a class="btn" id="gh" href="#">GitHub</a></div></section>
+<footer><span>© 2026 Ayan Shakeel</span><span>Toronto, Ontario</span></footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+var T=THREE,PI=Math.PI,cv=document.getElementById('gl'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var NAMES=['Demos','ImpactIQ','RecallMatch','Drift','Plans'];
+var MINT=new T.Color(0x34c9f0),CU=new T.Color(0xc24be6);
+var R=new T.WebGLRenderer({canvas:cv,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+var S=new T.Scene();S.background=new T.Color(0x07090d);S.fog=new T.Fog(0x07090d,11,24);
+var cam=new T.PerspectiveCamera(40,1,.1,60);
+S.add(new T.HemisphereLight(0x9fb4ff,0x14061c,.6));
+var key=new T.DirectionalLight(0xb9c8ff,.85);key.position.set(4,7,5);S.add(key);
+var rim=new T.PointLight(0x34c9f0,1.4,16);rim.position.set(-4,3,-3);S.add(rim);var rim2=new T.PointLight(0xc24be6,1.1,16);rim2.position.set(4,2.5,-3);S.add(rim2);
+function M(c,r,m){return new T.MeshStandardMaterial({color:c,roughness:r==null?.55:r,metalness:m||.1})}
+function add(p,g,m,x,y,z){var o=new T.Mesh(g,m);o.position.set(x||0,y||0,z||0);p.add(o);return o}
+
+/* turntable */
+var tbl=new T.Group();S.add(tbl);
+var rc=document.createElement('canvas');rc.width=rc.height=512;var rx=rc.getContext('2d');
+rx.fillStyle='#070b16';rx.fillRect(0,0,512,512);for(var r=250;r>0;r-=10){rx.strokeStyle='rgba(52,201,240,'+(.10+.25*Math.pow(Math.sin(r*.09),2))+')';rx.lineWidth=1.5;rx.beginPath();rx.arc(256,256,r,0,PI*2);rx.stroke()}
+var disc=add(tbl,new T.CylinderGeometry(5.4,5.6,.4,96),(function(){var tx=new T.CanvasTexture(rc);return new T.MeshStandardMaterial({map:tx,emissiveMap:tx,emissive:0xffffff,emissiveIntensity:.8,roughness:.5,metalness:.4})})(),0,-.2,0);
+[[5.62,.035,.8],[5.62,.22,.13]].forEach(function(c){var e=new T.Mesh(new T.TorusGeometry(c[0],c[1],12,160),new T.MeshBasicMaterial({color:0x34c9f0,transparent:true,opacity:c[2],fog:false}));e.rotation.x=PI/2;e.position.y=-.02;tbl.add(e)});
+
+var ex=[],A=[0,PI/2,PI,PI*1.5],act=1,fl={impact:0,lens:0,doc:[0,0,0,0],drift:0,shock:0,sel:[1,0,1,0,0,0]};
+var mouse={x:0,y:0};
+
+/* 0 ImpactIQ: F1-style sensor car */
+function car(){var g=new T.Group(),yaw=new T.Group(),c=new T.Group();g.add(yaw);yaw.add(c);yaw.rotation.y=-.45;yaw.scale.setScalar(.82);
+ var navy=M(0x1d2540,.35,.5),dark=M(0x0c0f1c,.6,.2),cy=new T.MeshBasicMaterial({color:0x34c9f0}),mg=new T.MeshBasicMaterial({color:0xc24be6});
+ function bx(w,h,d,m,x,y,z){return add(c,new T.BoxGeometry(w,h,d),m,x,y,z)}
+ bx(2.9,.04,.78,dark,0,.05,0);bx(1.5,.3,.58,navy,-.1,.26,0);bx(.95,.2,.22,navy,-.55,.5,0);bx(.8,.22,.02,navy,-.8,.62,0);bx(1.3,.012,.08,mg,.05,.43,0);
+ add(c,new T.CylinderGeometry(.04,.2,1.3,18),navy,1.15,.3,0).rotation.z=-PI/2;
+ add(c,new T.SphereGeometry(.09,16,12),cy,.05,.5,0);add(c,new T.TorusGeometry(.16,.018,8,20,PI),dark,.05,.42,0);
+ bx(.34,.03,1.5,navy,1.75,.1,0);bx(.2,.025,1.5,cy,1.8,.14,0);[-1,1].forEach(function(z){bx(.42,.16,.03,navy,1.72,.14,z*.75);bx(.42,.4,.03,navy,-1.3,.76,z*.5)});
+ bx(.3,.03,1,navy,-1.3,.78,0);bx(.26,.025,1,mg,-1.34,.9,0);bx(.06,.45,.06,dark,-1.2,.5,0);
+ bx(.5,.025,.24,M(0x34c9f0,.4),-.4,.62,0);for(var i=0;i<8;i++)bx(.03,.12,.03,M(0xc24be6,.3,.6),-.6+i*.07,.7,.08);
+ var w=[];[[1.1,.27,.22,.64],[-.95,.31,.34,.66]].forEach(function(d){[-1,1].forEach(function(z){var pv=new T.Group();pv.position.set(d[0],d[1],z*d[3]);c.add(pv);
+  add(pv,new T.CylinderGeometry(d[1],d[1],d[2],32),M(0x0a0c14,.9),0,0,0).rotation.x=PI/2;
+  add(pv,new T.TorusGeometry(d[1]*.68,.022,8,40),cy,0,0,z*d[2]/2);add(pv,new T.BoxGeometry(d[1]*1.3,.03,.02),cy,0,0,z*d[2]/2);
+  add(pv,new T.CylinderGeometry(.06,.06,d[2]+.04,12),dark,0,0,0).rotation.x=PI/2;w.push(pv);
+  var L=d[3]-.3;bx(.04,.04,L,dark,d[0],d[1],z*(.3+L/2))})});
+ var ug=add(c,new T.PlaneGeometry(3.2,1),new T.MeshBasicMaterial({color:0xc24be6,transparent:true,opacity:.3,depthWrite:false}),0,.02,0);ug.rotation.x=-PI/2;
+ var fl2=add(c,new T.ConeGeometry(.07,.5,12),new T.MeshBasicMaterial({color:0xc24be6,transparent:true,opacity:.8}),-1.7,.46,0);fl2.rotation.z=PI/2;
+ g.u=function(t,dt){var k=fl.impact;c.position.x=k*Math.sin(t*34)*.2;c.rotation.z=k*.07*Math.sin(t*24);w.forEach(function(p){p.rotation.z-=dt*(2+k*26)});
+  ug.material.opacity=.28+.1*Math.sin(t*3)+k*.35;fl2.scale.set(1,.15+k*2.2,1);fl.impact*=Math.exp(-dt*2.6)};
+ g.val=function(){return fl.impact*9.4};g.fmt=function(v){return v.toFixed(1)+' g'};g.lab='Acceleration, live';return g}
+
+/* 1 RecallMatch: documents + lens */
+function recall(){var g=new T.Group(),docs=[],lens=new T.Group();
+ for(var i=0;i<4;i++){var d=new T.Group();d.position.set(-1.5+i,.65,-.1*i);g.add(d);d.userData.doc=i;
+  var body=add(d,new T.BoxGeometry(.8,1.15,.05),M(0xb4bfee,.8),0,0,0);
+  for(var j=0;j<4;j++)add(d,new T.BoxGeometry(.5+.1*(j%2),.05,.06),M(0x3a3a44),-.05,.35-j*.2,0);
+  d.flag=add(d,new T.BoxGeometry(.8,.08,.07),M(0xc24be6),0,.5,0);d.flag.visible=false;d.body=body;docs.push(d)}
+ var ring=add(lens,new T.TorusGeometry(.42,.06,16,48),M(0xc24be6,.25,.85),0,0,0);
+ var h=add(lens,new T.CylinderGeometry(.05,.06,.8,12),M(0xc24be6,.3,.8),.36,-.5,0);h.rotation.z=.6;lens.position.set(0,1.2,.5);g.add(lens);
+ g.u=function(t,dt){var tx=act==2?Math.max(-1.6,Math.min(1.6,mouse.x*2.4)):Math.sin(t*.7)*1.3;fl.lens+=(tx-fl.lens)*Math.min(1,dt*6);
+  lens.position.x=fl.lens;lens.position.y=1.2+Math.sin(t*1.6)*.05;lens.rotation.z=Math.sin(t)*.08;
+  docs.forEach(function(d,i){var on=fl.doc[i];d.flag.visible=!!on;d.position.z+=((Math.abs(d.position.x-fl.lens)<.5?.35:-.1*i)-d.position.z)*Math.min(1,dt*8)})};
+ g.val=function(){return fl.doc.reduce(function(a,b){return a+b},0)*2+(Math.abs(Math.sin(performance.now()/500))*.8)};
+ g.fmt=function(){var n=fl.doc.reduce(function(a,b){return a+b},0);return n+' flagged'};g.lab='Recall matches';return g}
+
+/* 2 Data drift */
+function drift(){var g=new T.Group(),a=[],b=[],N=13;
+ for(var i=0;i<N;i++){a.push(add(g,new T.BoxGeometry(.18,1,.34),M(0xc24be6,.5),(i-6)*.24,0,-.22));b.push(add(g,new T.BoxGeometry(.18,1,.34),M(0x34c9f0,.4),(i-6)*.24,0,.22))}
+ add(g,new T.BoxGeometry(3.4,.04,1.1),M(0x20242c),0,0,0);var D=0,sc=0;
+ g.u=function(t,dt){fl.shock*=Math.exp(-dt*1.8);var tg=(act==3?mouse.x*3:Math.sin(t*.5)*1)+fl.shock;D+=(tg-D)*Math.min(1,dt*5);var s=0,tot=0;
+  for(var i=0;i<N;i++){var h1=2*Math.exp(-Math.pow((i-6)/2.6,2))+.1,h2=2*Math.exp(-Math.pow((i-6-D)/2.6,2))+.1;a[i].scale.y=h1;a[i].position.y=h1/2+.02;b[i].scale.y=h2;b[i].position.y=h2/2+.02;s+=Math.abs(h1-h2);tot+=h1}sc=s/tot*.5};
+ g.val=function(){return sc*12};g.fmt=function(){return sc.toFixed(2)};g.lab='Drift score';return g}
+
+/* 3 Course plan: weekly calendar */
+function plan(){var g=new T.Group(),b=new T.Group();g.add(b);b.position.set(0,.85,0);b.rotation.x=.35;
+ var cv2=document.createElement('canvas');cv2.width=1024;cv2.height=844;var q=cv2.getContext('2d');
+ function X(x){return(x+1.7)/3.4*1024}function Z(z){return(z+1.4)/2.8*844}
+ q.fillStyle='#0a0f1d';q.fillRect(0,0,1024,844);q.strokeStyle='rgba(52,201,240,.28)';q.lineWidth=2;
+ for(var c=0;c<=5;c++){q.beginPath();q.moveTo(X(-1.5+.6*c),Z(-1.4));q.lineTo(X(-1.5+.6*c),Z(.94));q.stroke()}
+ for(var r=0;r<=7;r++){q.beginPath();q.moveTo(X(-1.7),Z(-.95+.27*r));q.lineTo(X(1.5),Z(-.95+.27*r));q.stroke()}
+ q.fillStyle='#9fb4e0';q.textAlign='center';q.font='600 36px sans-serif';['Mon','Tue','Wed','Thu','Fri'].forEach(function(d,i){q.fillText(d,X(-1.2+.6*i),Z(-1.12))});
+ q.font='26px sans-serif';for(r=0;r<7;r++)q.fillText(String(9+r),X(-1.6),Z(-.95+.27*r+.17));
+ var dk=M(0x0a0f1d);add(b,new T.BoxGeometry(3.4,.06,2.8),[dk,dk,new T.MeshStandardMaterial({map:new T.CanvasTexture(cv2),roughness:.7,metalness:.1}),dk,dk,dk],0,-.03,0);
+ add(g,new T.CylinderGeometry(.12,.3,.7,16),M(0x1d2540,.4,.6),0,.35,0);add(g,new T.TorusGeometry(.34,.015,8,48),new T.MeshBasicMaterial({color:0x34c9f0}),0,.02,0).rotation.x=PI/2;
+ var scan=add(b,new T.BoxGeometry(3.1,.006,.02),new T.MeshBasicMaterial({color:0x34c9f0,transparent:true,opacity:.6}),-.1,.012,-.95);
+ var C=[{n:'MATH 135',d:[0,2,4],r:0,l:1,p:-1},{n:'MATH 136',d:[0,2,4],r:2,l:1,p:0},{n:'CS 135',d:[1,3],r:1,l:2,p:-1},{n:'CS 136',d:[1,3],r:4,l:2,p:2},{n:'STAT 230',d:[0,2,4],r:0,l:2,p:-1},{n:'PHYS 121',d:[1,3],r:2,l:1,p:-1}];
+ var ms=C.map(function(c,i){var cvt=document.createElement('canvas');cvt.width=256;cvt.height=128*c.l;var t=cvt.getContext('2d');t.fillStyle='#fff';t.fillRect(0,0,256,cvt.height);t.fillStyle='#0a0f1d';t.font='700 40px sans-serif';t.textAlign='center';t.textBaseline='middle';t.fillText(c.n,128,cvt.height/2);
+  var sm=M(0x3a4670,.5,.2),tm=new T.MeshStandardMaterial({map:new T.CanvasTexture(cvt),color:0x3a4670,roughness:.5}),h=.14+.014*i,dz=c.l*.27-.03,list=[];
+  c.d.forEach(function(d){var m=add(b,new T.BoxGeometry(.5,h,dz),[sm,sm,tm,sm,sm,sm],-1.2+.6*d,h/2,-.95+.27*(c.r+c.l/2));m.userData.cell=i;list.push(m)});
+  return{sm:sm,tm:tm,list:list,h:h}});
+ function st(i){if(!fl.sel[i])return 0;var c=C[i];if(c.p>=0&&!fl.sel[c.p])return 2;for(var j=0;j<C.length;j++){if(j!==i&&fl.sel[j]){var o=C[j];if(c.r<o.r+o.l&&o.r<c.r+c.l&&c.d.some(function(d){return o.d.indexOf(d)>=0}))return 2}}return 1}
+ var cl=[new T.Color(0x3a4670),MINT,CU];
+ g.u=function(t,dt){var k=Math.min(1,dt*8);scan.position.z=-.95+((t*.14)%1.89);
+  ms.forEach(function(m,i){var s=st(i);m.sm.color.lerp(cl[s],k);m.tm.color.lerp(cl[s],k);var sc=s?1:.45;m.list.forEach(function(o){o.scale.y+=(sc-o.scale.y)*k;o.position.y=m.h*o.scale.y/2+(s===2?.03*Math.abs(Math.sin(t*9)):0)})})};
+ function tally(){var n=0,x=0;for(var i=0;i<C.length;i++)if(fl.sel[i]){n++;if(st(i)===2)x++}return[n,x]}
+ g.val=function(){var a=tally();return a[1]*4+a[0]*.5};
+ g.fmt=function(){var a=tally();return a[0]+' courses, '+a[1]+' issues'};g.lab='Plan check';return g}
+
+[car,recall,drift,plan].forEach(function(f,i){var g=f();g.position.set(Math.sin(A[i])*3.1,0,Math.cos(A[i])*3.1);g.rotation.y=A[i];g.userData.ex=i;tbl.add(g);ex.push(g)});
+
+/* camera, scroll */
+var story=document.getElementById('story'),panels=[].slice.call(document.querySelectorAll('.panel')),rail=document.getElementById('rail'),hud=document.getElementById('hud'),F=0,rot=0,cp=new T.Vector3(0,3.8,11),cl=new T.Vector3(0,.3,0);
+NAMES.forEach(function(n,i){var b=document.createElement('button');b.textContent=n;b.onclick=function(){scrollTo({top:story.offsetTop+i*innerHeight})};rail.appendChild(b)});
+var rb=[].slice.call(rail.children),bar=document.getElementById('bar');
+function size(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}size();addEventListener('resize',size);
+function frame(){var sy=scrollY,off=story.offsetTop;F=Math.max(0,Math.min(4,(sy-off)/innerHeight));bar.style.width=Math.min(100,sy/(document.body.scrollHeight-innerHeight)*100)+'%';
+ var inStory=sy>off-innerHeight*.45&&sy<off+story.offsetHeight;rail.style.opacity=document.getElementById('scrollhint').style.opacity=inStory?1:0;
+ var s=Math.round(F);panels.forEach(function(p,i){p.classList.toggle('on',inStory&&i===s)});rb.forEach(function(b,i){b.classList.toggle('on',i===s)});
+ hud.classList.toggle('on',inStory&&s>0);act=s;if(s!==lastS){lastS=s;onStop(s)}return inStory}
+var lastT=0,spark=document.getElementById('spark'),sx=spark.getContext('2d'),hist=new Array(110).fill(0),hv=document.getElementById('hv'),hl=document.getElementById('hl'),sm=0,narrow=function(){return innerWidth<800};
+function loop(ms){requestAnimationFrame(loop);var t=ms/1000,dt=Math.min(.05,t-lastT);lastT=t;
+ var inStory=frame();if(scrollY>story.offsetTop+story.offsetHeight+innerHeight)return;
+ /* table rotation */
+ if(act===0){if(!RM)rot+=dt*.12}else{var tg=-A[act-1],d=((tg-rot+PI)%(2*PI)+2*PI)%(2*PI)-PI;rot+=d*(1-Math.exp(-dt*4))}
+ tbl.rotation.y=rot;
+ /* camera */
+ var pp=act===0?[0,3.8,11,0,.3,0]:[0,2.7,10.4,narrow()?0:-1.7,narrow()?.2:.5,3];
+ var k=1-Math.exp(-dt*3.2);cam.position.lerp(cp.set(pp[0]+mouse.x*.35,pp[1]+mouse.y*.2,pp[2]),k);cl.lerp(new T.Vector3(pp[3],pp[4],pp[5]),k);cam.lookAt(cl);
+ rim.color.lerp(act===1||act===3?CU:MINT,k);
+ ex.forEach(function(g){g.u(t,dt)});fx(t,dt);
+ if(act>0){var e=ex[act-1];sm+=(e.val()-sm)*Math.min(1,dt*10);hist.push(sm+Math.random()*.15);hist.shift();hl.textContent=e.lab;hv.textContent=e.fmt(sm);
+  var W=520,H=112,mx=Math.max(4,Math.max.apply(null,hist));sx.clearRect(0,0,W,H);sx.strokeStyle='#34c9f0';sx.lineWidth=3;sx.shadowColor='#34c9f0';sx.shadowBlur=12;sx.beginPath();hist.forEach(function(v,i){var x=i/(hist.length-1)*W,y=H-6-v/mx*(H-14);i?sx.lineTo(x,y):sx.moveTo(x,y)});sx.stroke()}
+ R.render(S,cam)}
+requestAnimationFrame(loop);
+
+/* pointer + raycast */
+var ray=new T.Raycaster(),v2=new T.Vector2();
+addEventListener('pointermove',function(e){mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight*2-1)});
+cv.addEventListener('pointerdown',function(){});
+addEventListener('click',function(e){if(e.target.closest('a,button,nav,.rail'))return;if(scrollY>story.offsetTop+story.offsetHeight||act===0)return;
+ v2.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1));ray.setFromCamera(v2,cam);var h=ray.intersectObjects(ex[act-1].children,true)[0];
+ if(act===1)fl.impact=1;
+ else if(act===3)fl.shock=(Math.random()<.5?-1:1)*(2+Math.random()*1.5);
+ else if(act===2){var d=Math.max(0,Math.min(3,Math.round(fl.lens+1.5)));fl.doc[d]=fl.doc[d]?0:1}
+ else if(act===4&&h){var o=h.object;if(o.userData.cell!=null){fl.sel[o.userData.cell]^=1}}});
+addEventListener('keydown',function(e){var o=story.offsetTop;if(scrollY<o-innerHeight*.45||scrollY>o+story.offsetHeight)return;var s=Math.round(F);if(e.key==='ArrowRight')scrollTo({top:o+Math.min(4,s+1)*innerHeight});if(e.key==='ArrowLeft')scrollTo({top:o+Math.max(0,s-1)*innerHeight})});
+
+/* ---- live layer ---- */
+var hov=false,glow=0,flash=0,vel=0,py=0,lastS=-1,ripples=[],onUI=false,pm={x:innerWidth/2,y:innerHeight/2},cx=pm.x,cy=pm.y,cur=document.getElementById('cur'),ray2=new T.Raycaster(),q2=new T.Vector2();
+var sp=new Float32Array(1800*3);for(var i=0;i<1800;i++){var rr=9+Math.random()*30,aa=Math.random()*PI*2,bb=Math.acos(2*Math.random()-1);sp[i*3]=rr*Math.sin(bb)*Math.cos(aa);sp[i*3+1]=rr*Math.cos(bb);sp[i*3+2]=rr*Math.sin(bb)*Math.sin(aa)}
+var sg=new T.BufferGeometry();sg.setAttribute('position',new T.BufferAttribute(sp,3));
+var stars=new T.Points(sg,new T.PointsMaterial({color:0xb8c8ff,size:.06,transparent:true,opacity:.85,depthWrite:false,fog:false}));S.add(stars);
+function neb(c,x,y,z,sz,op){var k=document.createElement('canvas');k.width=k.height=128;var q=k.getContext('2d'),gr=q.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,c);gr.addColorStop(1,'rgba(0,0,0,0)');q.fillStyle=gr;q.fillRect(0,0,128,128);
+ var o=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(k),blending:T.AdditiveBlending,transparent:true,opacity:op,depthWrite:false,fog:false}));o.position.set(x,y,z);o.scale.set(sz,sz,1);S.add(o);return o}
+var nb=[neb('rgba(52,201,240,1)',-14,6,-20,34,.16),neb('rgba(194,75,230,1)',16,2,-24,38,.15),neb('rgba(124,92,255,1)',0,-8,-26,44,.12)];
+requestAnimationFrame(function(){document.body.classList.add('ready')});
+var rings=[];[[8.4,.5,0x34c9f0],[10.2,-.7,0xc24be6],[12.4,.25,0x7c5cff]].forEach(function(c){var tl=new T.Group();tl.rotation.x=PI/2+c[1]*.3;tl.rotation.y=c[1];var sp2=new T.Group();tl.add(sp2);
+ sp2.add(new T.Mesh(new T.TorusGeometry(c[0],.012,6,180),new T.MeshBasicMaterial({color:c[2],transparent:true,opacity:.35,fog:false})));
+ var sat=new T.Mesh(new T.SphereGeometry(.09,12,12),new T.MeshBasicMaterial({color:c[2],fog:false}));sat.position.x=c[0];sp2.add(sat);S.add(tl);rings.push(sp2)});
+function fx(t,dt){var sy=scrollY;vel+=((sy-py)/Math.max(dt,.001)-vel)*Math.min(1,dt*6);py=sy;var av=Math.min(1,Math.abs(vel)/2500);
+ cam.rotateZ(-Math.max(-1,Math.min(1,vel/4000))*.07);
+ var fv=40+av*10;if(Math.abs(cam.fov-fv)>.01){cam.fov+=(fv-cam.fov)*Math.min(1,dt*6);cam.updateProjectionMatrix()}
+ stars.rotation.y+=dt*(.015+av*.4);stars.material.size=.06+av*.1;
+ rings.forEach(function(r,i){r.rotation.z+=dt*(.1+i*.07)*(1+av*6)});
+ rim.intensity=1.4+.5*Math.sin(t*2.2);nb.forEach(function(n,i){n.material.opacity=[.16,.15,.12][i]*(1+.25*Math.sin(t*.5+i*2))});
+ glow+=((hov?.22:0)-glow)*Math.min(1,dt*6);flash*=Math.exp(-dt*3);
+ var col=(act===1||act===3)?CU:MINT;ex.forEach(function(g,i){var k=i===act-1?glow+flash+.1:.03;g.traverse(function(o){if(o.isMesh)[].concat(o.material).forEach(function(m){if(m.emissive)m.emissive.copy(col).multiplyScalar(k)})})});
+ for(var i=ripples.length-1;i>=0;i--){var m=ripples[i];m.userData.age+=dt;var a=m.userData.age;m.scale.setScalar(.3+a*3.6);m.material.opacity=Math.max(0,.8*(1-a/1.3));if(a>1.3){tbl.remove(m);m.geometry.dispose();m.material.dispose();ripples.splice(i,1)}}
+ if(act>0)hud.style.boxShadow='0 0 '+(10+sm*3)+'px rgba(52,201,240,'+Math.min(.45,.08+sm*.04)+')';
+ cx+=(pm.x-cx)*Math.min(1,dt*14);cy+=(pm.y-cy)*Math.min(1,dt*14);cur.style.transform='translate('+cx+'px,'+cy+'px)';cur.classList.toggle('big',hov||onUI)}
+addEventListener('pointermove',function(e){pm.x=e.clientX;pm.y=e.clientY;onUI=!!(e.target.closest&&e.target.closest('a,button'));hov=false;
+ if(act>0&&scrollY<story.offsetTop+story.offsetHeight&&!onUI){q2.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1));ray2.setFromCamera(q2,cam);hov=!!ray2.intersectObjects(ex[act-1].children,true)[0]}});
+addEventListener('click',function(e){if(e.target.closest('a,button')||act===0||scrollY>story.offsetTop+story.offsetHeight)return;flash=.7;
+ var x=ex[act-1],m=new T.Mesh(new T.RingGeometry(.9,1,64),new T.MeshBasicMaterial({color:(act===1||act===3)?0xc24be6:0x34c9f0,transparent:true,opacity:.8,side:T.DoubleSide,depthWrite:false}));
+ m.rotation.x=-PI/2;m.position.set(x.position.x,.03,x.position.z);m.userData.age=0;tbl.add(m);ripples.push(m);
+ [0,[120,.25,'sawtooth',40],[700,.12,'sine',1100],[260,.4,'triangle',70],[440,.1,'square',520]][act].length&&blip.apply(null,[0,[120,.25,'sawtooth',40],[700,.12,'sine',1100],[260,.4,'triangle',70],[440,.1,'square',520]][act])});
+document.querySelectorAll('.btn').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.2+'px,'+(e.clientY-r.top-r.height/2)*.3+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
+function scr(el){if(RM)return;var o=el.dataset.o||(el.dataset.o=el.textContent),i=0,ch='abcdefghijklmnopqrstuvwxyz';clearInterval(el._t);
+ el._t=setInterval(function(){i++;var n=Math.floor(o.length*i/18);el.textContent=o.split('').map(function(c,k){return k<n||c===' '||c==='.'||c==="'"?c:ch[Math.random()*26|0]}).join('');if(i>=18){clearInterval(el._t);el.textContent=o}},32)}
+function onStop(s){var h=panels[s].querySelector('h1,h2');if(h)scr(h);blip(500+s*90,.08,'sine',800+s*90)}
+var ac=null,snd=false;
+document.getElementById('snd').onclick=function(e){e.preventDefault();snd=!snd;this.textContent='Sound '+(snd?'on':'off');if(snd&&!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(snd&&ac.resume)ac.resume();blip(660,.12,'sine',990)};
+function blip(f,d,ty,fe){if(!snd||!ac)return;var o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime;o.type=ty||'sine';o.frequency.setValueAtTime(f,n);o.frequency.exponentialRampToValueAtTime(fe||f*1.5,n+d);g.gain.setValueAtTime(.06,n);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g);g.connect(ac.destination);o.start(n);o.stop(n+d)}
+function tick(){document.getElementById('clk').textContent='Live · Toronto '+new Date().toLocaleTimeString('en-CA',{timeZone:'America/Toronto'})}tick();setInterval(tick,1000);
+
+/* ---- site content: edit this part ---- */
+var SITE={email:'a9shakee@uwaterloo.ca',github:'https://github.com/Ayanshxkeel',linkedin:'https://www.linkedin.com/in/ayan-shakeel/'};
+var REPOS={impactiq:'ImpactIQ',recallmatch:'recallmatch',driftwatch:'data-drift-watch',courseplan:'course-plan-simulator',timeestimator:'assignment-time-estimator',issuepilot:'issuepilot'};
+var CASES=[
+{id:'impactiq',t:'ImpactIQ',k:'Physical computing, 2026',lede:'A real tap, a live story.',focus:'Sensors and dashboards',stack:'Arduino / C++, MPU-6500, Python / FastAPI, Web Serial, Three.js, SOLIDWORKS',demo:'https://impact-f1tech.vercel.app/dashboard/',
+ sec:[['The question','How do you make a sudden movement understandable at a glance, instead of a stream of raw sensor numbers?'],['What I built','ImpactIQ is a model-car telemetry prototype. An Arduino and an MPU-6500 capture sudden movement, and a dashboard turns each sensor event into peak acceleration, inferred direction, history, and a 3D view.'],['Try it','Back on the turntable, click the car. The spike on the live chart is the same idea in miniature.']]},
+{id:'recallmatch',t:'RecallMatch',k:'Public data, search',lede:'A more transparent way to search Canadian product recalls.',focus:'Search and public data',stack:'Python, pandas',
+ sec:[['The question','Recall notices are public, but finding the ones that apply to a product you own takes effort.'],['What I built','A search experience for Canadian product recalls, designed so each match is easy to inspect.'],['Try it','On the turntable, slide the lens across the notices and click to flag one.']]},
+{id:'driftwatch',t:'Data Drift Watch',k:'Data quality, statistics',lede:'See when new data stops looking like the old.',focus:'Data quality',stack:'Python, pandas, scikit-learn',
+ sec:[['The question','Before you reuse a model, does the new data still look like the data it learned from?'],['What I built','A tool that compares two datasets and shows where the new data departs from the old, summarised as a drift score.'],['Try it','On the turntable, move the pointer to shift the mint curve away from the copper one, then click to shock it.']]},
+{id:'courseplan',t:'Course Plan Simulator',k:'Constraint solving',lede:'Explore course combinations before you commit to them.',focus:'Planning tools',stack:'Python, SQL',
+ sec:[['The question','Which combinations of courses actually work once prerequisites, terms, and workload all apply?'],['What I built','A simulator for assembling a weekly plan that flags broken prerequisites, scheduling conflicts, and workload issues as you build.'],['Try it','On the turntable, click courses to drop them into the week. Pick one without its prerequisite, or double-book a slot, and watch it turn magenta.']]},
+{id:'timeestimator',t:'Assignment Time Estimator',k:'Planning, regression',lede:'Plan coursework from your own history of estimates and actual hours.',focus:'Estimation and regression',stack:'Python, Streamlit, SQLite',
+ sec:[['The question','How much should you trust your first estimate of how long a task will take?'],['What I built','You log completed tasks with their estimated and actual hours. For a new task, the app uses same-type history to suggest an adjusted time: a simple linear regression once there are five or more varied examples, a median ratio with three or four, and your own estimate when there is too little data.'],['Honest error checks','It compares original and adjusted errors by leaving each logged task out in turn, and it says so when the adjusted estimate turns out worse. Records stay in a local SQLite file.']]},
+{id:'issuepilot',t:'IssuePilot',k:'Information retrieval',lede:'Find open-source issues that match the skills you actually have.',focus:'Text similarity',stack:'Python, Streamlit, GitHub API',
+ sec:[['The question','A project can have dozens of open issues. Which ones are worth a first look for you?'],['What I built','IssuePilot pulls the first 100 open issues from a public GitHub repository, leaves out pull requests, and ranks their titles, descriptions and labels against the skills you enter using TF-IDF and cosine similarity.'],['Honest limits','It offers a starting shortlist, not a difficulty estimate. You still need to read the original issue and the contribution guide.']]}];
+var cs=document.getElementById('case'),cw=document.getElementById('cw'),cxb=document.getElementById('cx'),baseTitle=document.title,lastF=null;
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function route(){var m=location.hash.match(/^#\/([\w-]+)/),c=m&&CASES.filter(function(x){return x.id===m[1]})[0];
+ if(!c){if(cs.classList.contains('open')){cs.classList.remove('open');document.body.style.overflow='';document.title=baseTitle;if(lastF&&lastF.focus)lastF.focus()}return}
+ var n=CASES[(CASES.indexOf(c)+1)%CASES.length];lastF=document.activeElement;
+ cw.innerHTML='<div class="kick">'+esc(c.k)+'</div><h2>'+esc(c.t)+'</h2><p class="lede">'+esc(c.lede)+'</p><div class="meta"><div><span>Focus</span>'+esc(c.focus)+'</div><div><span>Built with</span>'+esc(c.stack)+'</div></div>'+
+  c.sec.map(function(x){return '<h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p>'}).join('')+
+  '<div class="btns">'+(c.demo?'<a class="btn pri" href="'+esc(c.demo)+'" target="_blank" rel="noopener">Open live dashboard</a>':'')+'<a class="btn'+(c.demo?'':' pri')+'" href="'+esc(SITE.github+'/'+REPOS[c.id])+'" target="_blank" rel="noopener">Read the build</a><a class="btn" href="#/'+n.id+'">Next: '+esc(n.t)+'</a><a class="btn" href="#contact" id="cc">Work with me</a></div>';
+ document.getElementById('cc').onclick=function(){location.hash='#contact'};
+ cs.classList.add('open');cs.scrollTop=0;document.body.style.overflow='hidden';document.title=c.t+' — Ayan Shakeel';cxb.focus({preventScroll:true})}
+cxb.onclick=function(){location.hash='#work'};
+addEventListener('keydown',function(e){if(e.key==='Escape'&&cs.classList.contains('open'))location.hash='#work'});
+addEventListener('hashchange',route);
+document.getElementById('em').href='mailto:'+SITE.email;
+[['li',SITE.linkedin],['gh',SITE.github],['gh2',SITE.github]].forEach(function(x){var a=document.getElementById(x[0]);a.href=x[1];a.target='_blank';a.rel='noopener'});
+route();
+
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;el.classList.add('in');io.unobserve(el);setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay=''},1100)}})},{threshold:.12}):null;
+function rv(el,i){el.classList.add('rv');el.style.transitionDelay=(i||0)*80+'ms';if(io)io.observe(el);else el.classList.remove('rv')}
+document.querySelectorAll('main section h2,.about>div,.chips,#contact .btns').forEach(function(e){rv(e)});
+addEventListener('pointermove',function(e){var m=document.querySelector('main'),r=m.getBoundingClientRect();m.style.setProperty('--mx',e.clientX+'px');m.style.setProperty('--my',(e.clientY-r.top)+'px')});
+/* work list */
+var P=[['ImpactIQ','Arduino and MPU-6500 sensor with a live acceleration dashboard.','Hardware','Data'],['RecallMatch','Transparent search across Canadian product recalls.','Data','Software'],['Data Drift Watch','Spot when new data stops looking like the training data.','Data'],['Course Plan Simulator','Test course combinations against prerequisites and workload.','Software'],['Assignment Time Estimator','Estimate coursework time from your own history, with honest error checks.','Data','Software'],['IssuePilot','Rank open GitHub issues against the skills you enter.','Data','Software']];
+var list=document.getElementById('list'),chips=document.getElementById('chips');
+P.forEach(function(p,ix){var a=document.createElement('a');a.className='proj';a.href='#/'+CASES[ix].id;a.dataset.t=p.slice(2).join(',');a.innerHTML='<h3>'+p[0]+'</h3><p>'+p[1]+'</p><span>'+p.slice(2).join(', ')+'</span>';list.appendChild(a);rv(a,ix)});
+['All','Hardware','Data','Software'].forEach(function(n,i){var b=document.createElement('button');b.className='chip';b.textContent=n;b.setAttribute('aria-pressed',i==0);b.onclick=function(){[].forEach.call(chips.children,function(c){c.setAttribute('aria-pressed',c===b)});[].forEach.call(list.children,function(a){a.hidden=n!=='All'&&a.dataset.t.indexOf(n)<0})};chips.appendChild(b)});
+})();
+</script>
 </body>
 </html>
